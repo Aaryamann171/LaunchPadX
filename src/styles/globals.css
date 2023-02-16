@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+    --primary: #21201F;
+    --accent: #EF6817;
+    --foreground: #EEEEEE;
+}
