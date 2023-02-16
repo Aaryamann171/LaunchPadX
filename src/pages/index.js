@@ -1,6 +1,7 @@
 import Head from "next/head";
+import Image from "next/image";
 
-const Home = () => {
+const Home = ({ nextLaunchData, starmanData }) => {
   return (
     <>
       <Head>
@@ -9,8 +10,59 @@ const Home = () => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <div className="bg-foreground flex justify-between p-10">
+        <div className="my-auto mx-10 p-4">
+          <h1 className="font-bold text-7xl mb-5">LaunchPadX</h1>
+          <h1 className="text-2xl">Explore The Final Frontier</h1>
+        </div>
+        <div>
+          <Image className="rounded" src="/spaceman.jpg" width={500} height={500}></Image>
+        </div>
+      </div>
+      <div>
+          <h1 className="font-bold text-3xl mx-10 mt-10">Upcoming Launch</h1>
+              <div className="mb-10 bg-foreground rounded shadow m-8 p-10 flex flex-col">
+                    <h1 className="text-3xl font-bold mb-4">Name: {nextLaunchData.name}</h1>
+                    <p className="text-lg mt-4 text-slate-800">Date: {nextLaunchData.date_utc}</p>
+                    <p className="text-lg mt-4 text-slate-800">Rocket: {nextLaunchData.rocket}</p>
+                    <p className="text-lg mt-4 text-slate-800">Launchpad: {nextLaunchData.launchpad}</p>
+              </div>
+      </div>
+          <h1 className="font-bold text-3xl mx-10 mt-10">The Starman</h1>
+          <div className="flex mb-10 bg-foreground rounded shadow m-8 p-10 ">
+              <div className="w-2/3">
+                  <h1 className="text-3xl font-bold mb-4">{starmanData.name}</h1>
+                    <p className="text-lg mb-4">{starmanData.details}</p>
+                    <p className="text-lg mt-4 text-slate-800">Launch Date: {starmanData.launch_date_utc}</p>
+                    <p className="text-lg mt-4 text-slate-800">Period Days: {starmanData.period_days} km</p>
+                    <p className="text-lg mt-4 text-slate-800">Earth Distance: {starmanData.earth_distance_km} km</p>
+                    <p className="text-lg mt-4 text-slate-800">Speed: {starmanData.speed_kph} kph</p>
+              </div>
+              <div className="w-1/3 my-auto mx-8">
+                    <Image src={`${starmanData.flickr_images[1]}`} width={600} height={600} className="rounded"></Image>
+              </div>
+          </div>
     </>
   )
+}
+
+export const getStaticProps = async (context) => {
+    const nextLaunchEndpoint = 'https://api.spacexdata.com/v5/launches/next';
+    const starmanEndpoint = 'https://api.spacexdata.com/v4/roadster';
+
+    const nextLaunchRes = await fetch(nextLaunchEndpoint);
+    const nextLaunchResJSON = await nextLaunchRes.json();
+
+    const starmanRes = await fetch(starmanEndpoint);
+    const starmanResJSON = await starmanRes.json();
+
+    return {
+        props: {
+            nextLaunchData: nextLaunchResJSON,
+            starmanData: starmanResJSON
+
+        },
+    }
 }
 
 export default Home;
