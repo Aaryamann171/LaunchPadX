@@ -18,7 +18,7 @@ const Home = ({ latestLaunchData, starmanData }) => {
           <h1 className="text-2xl">Explore The Final Frontier</h1>
         </div>
         <div className="w-1/2 flex justify-center">
-          <Image className="rounded" src="/spaceman.jpg" width={500} height={500}></Image>
+          <Image className="rounded" src="/spaceman.jpg" width={500} height={500} alt="starman-hero-img"></Image>
         </div>
       </div>
       <div>
@@ -32,7 +32,7 @@ const Home = ({ latestLaunchData, starmanData }) => {
                     <Link href={`${latestLaunchData.links.webcast}`} legacyBehavior><a target={'_blank'}><p className="text-lg mt-4 text-blue-600">Check It Out</p></a></Link>
                 </div>
                 <div className="w-1/3">
-                    <Image src={`${latestLaunchData.launchpadImg}`} width={600} height={600} className="rounded"></Image>
+                    <Image src={`${latestLaunchData.launchpadImg}`} width={600} height={600} className="rounded" alt="launchpad"></Image>
                 </div>
               </div>
       </div>
@@ -47,7 +47,7 @@ const Home = ({ latestLaunchData, starmanData }) => {
                     <p className="text-lg mt-4 text-slate-800"><span className="font-bold">Speed: </span>{starmanData.speed_kph.toFixed(2)} kph</p>
               </div>
               <div className="w-1/3 my-auto mx-8">
-                    <Image src={`${starmanData.flickr_images[1]}`} width={600} height={600} className="rounded"></Image>
+                    <Image src={`${starmanData.flickr_images[1]}`} width={600} height={600} className="rounded" alt="starman"></Image>
               </div>
           </div>
     </>
