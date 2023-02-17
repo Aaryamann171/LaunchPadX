@@ -9,7 +9,7 @@ const Rockets = ({ rocketData }) => {
             </div>
             <div className="mb-10 bg-foreground rounded shadow m-8 p-10 flex">
             <div className="w-1/3 bg-white m-4 p-8 rounded text-center">
-                <Image src={`${rocketData.flickr_images[0]}`} width={200} height={200} className="m-auto"></Image>
+                <Image src={`${rocketData.flickr_images[0]}`} width={200} height={200} className="m-auto" alt="rocket"></Image>
                 <h3 className="text-sm text-slate-700"><span className="font-bold">Type: </span>{rocketData.type}</h3>
                 <h3 className="text-sm text-slate-700"><span className="font-bold">Active: </span>{rocketData.active ? "Yes" : "No"}</h3>
                 <h3 className="text-sm text-slate-700"><span className="font-bold">First Flight: </span>{rocketData.first_flight}</h3>
