@@ -32,8 +32,25 @@ const Rockets = ({ rocketData }) => {
     )
 }
 
-export const getServerSideProps = async (context) => {
-    const rocketId = context.query.rocketId;
+export const getStaticPaths = async () => {
+    const rocketsEndpoint = 'https://api.spacexdata.com/v4/rockets';
+    const rocketsRes = await fetch(rocketsEndpoint);
+    const rocketsResJSON = await rocketsRes.json();
+
+    const paths = rocketsResJSON.map( rocket => {
+        return {
+            params: { rocketId: rocket.id }
+        }
+    })
+
+  return {
+    paths,
+    fallback: false,
+  }
+}
+
+export const getStaticProps = async (context) => {
+    const rocketId = context.params.rocketId;
     const rocketEndpoints = `https://api.spacexdata.com/v4/rockets/${rocketId}`;
     const rocketRes = await fetch(rocketEndpoints);
     const rocketResJSON = await rocketRes.json();
