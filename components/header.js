@@ -1,17 +1,34 @@
 import Link from "next/link";
+import { useState } from "react";
+import { GiHamburgerMenu } from 'react-icons/gi';
+import { AiOutlineClose } from 'react-icons/ai';
 
 const Header = () => {
+    const [headerOpen, setHeaderOpen] = useState(false);
     return (
-        <div className="w-full bg-primary">
-            <div className="flex px-8 py-4">
-                <div className="flex w-[90%]">
-                <Link href="/"><h1 className="text-2xl px-4 text-accent">LaunchPadX</h1></Link>
+        <div className="w-full bg-primary p-2">
+            <div className="md:flex justify-between my-2 hidden">
+                <Link href="/"><h1 className="text-2xl text-accent px-2">LaunchPadX</h1></Link>
                 <Link href="/missions"><h1 className="text-2xl px-4 text-foreground">Missions</h1></Link>
                 <Link href="/rockets"><h1 className="text-2xl px-4 text-foreground">Rockets</h1></Link>
                 <Link href="/launches"><h1 className="text-2xl px-4 text-foreground">Launches</h1></Link>
-                </div>
                 <Link href="/about"><h1 className="text-2xl px-4 text-foreground">About</h1></Link>
             </div>
+            <div className="flex justify-between px-4 my-2 px-2 md:hidden">
+                <Link href="/"><h1 className="text-2xl text-accent md:mb-0">LaunchPadX</h1></Link>
+                <div onClick={()=>setHeaderOpen(!headerOpen)} className='text-3xl text-foreground cursor-pointer md:hidden'>
+                    { headerOpen ? <GiHamburgerMenu /> : <AiOutlineClose /> }
+                </div>
+            </div>
+            {
+            headerOpen &&
+            <div className="md:hidden pb-4">
+                <Link href="/missions"><h1 className="text-2xl px-4 text-foreground mt-2">Missions</h1></Link>
+                <Link href="/rockets"><h1 className="text-2xl px-4 text-foreground mt-2">Rockets</h1></Link>
+                <Link href="/launches"><h1 className="text-2xl px-4 text-foreground mt-2">Launches</h1></Link>
+                <Link href="/about"><h1 className="text-2xl px-4 text-foreground mt-2">About</h1></Link>
+            </div>
+            }
         </div>
     )
 }
