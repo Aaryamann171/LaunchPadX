@@ -22,7 +22,7 @@ const Home = ({ launchesData, latestLaunchData, starmanData }) => {
         </div>
       </div>
       <div>
-          <div className="w-full flex flex-col md:flex-row mt-10">
+          <div className="w-full justify-center text-center flex flex-col md:flex-row mt-10">
             <h1 className="text-lg md:text-3xl mx-10 bg-blue-200 py-4 px-8 rounded-full"><span className="font-bold">Total Launches: </span>{launchesData.totalLaunches}</h1>
             <h1 className="text-lg md:text-3xl mx-10 bg-green-200 py-4 px-8 rounded-full mt-10 md:mt-0"><span className="font-bold">Successful Launches: </span>{launchesData.successfulLaunches}</h1>
           </div>
