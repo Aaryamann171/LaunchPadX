@@ -17,7 +17,7 @@ const Header = () => {
             <div className="flex justify-between px-4 my-2 px-2 md:hidden">
                 <Link href="/"><h1 className="text-2xl text-accent md:mb-0">LaunchPadX</h1></Link>
                 <div onClick={()=>setHeaderOpen(!headerOpen)} className='text-3xl text-foreground cursor-pointer md:hidden'>
-                    { headerOpen ? <GiHamburgerMenu /> : <AiOutlineClose /> }
+                    { headerOpen ? <AiOutlineClose /> : <GiHamburgerMenu /> }
                 </div>
             </div>
             {
