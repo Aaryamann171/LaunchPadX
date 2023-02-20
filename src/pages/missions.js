@@ -1,4 +1,6 @@
 import Link from "next/link";
+import ReadMoreReact from 'read-more-react';
+
 
 const Missions = ({ missionData }) => {
     return (
@@ -13,10 +15,17 @@ const Missions = ({ missionData }) => {
                         <div className="mb-10 bg-foreground rounded shadow m-8 p-10" key={index}>
                             <h1 className="text-3xl font-bold">{mission.mission_name}</h1>
                             <h3 className="text-sm text-slate-700"><span className="font-bold">Manufactured by: </span>{manufacturersList}</h3>
-                            <p className="text-lg mt-4 text-slate-800">{mission.description}</p>
+                            <div className="text-lg mt-4 text-slate-800">
+                            <ReadMoreReact 
+                                text={mission.description}
+                                min={200}
+                                ideal={250}
+                                max={500}
+                            />
+                            </div>
                             <div className="mt-8">
                                 <Link href={`${mission.wikipedia}`} legacyBehavior>
-                                    <a target={'_blank'} className="text-blue-600">Learn More</a>
+                                    <a target={'_blank'} className="text-blue-600">Checkout Wiki</a>
                                 </Link>
                             </div>
                         </div>
