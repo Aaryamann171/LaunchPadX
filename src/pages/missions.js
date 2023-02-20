@@ -1,7 +1,6 @@
 import Link from "next/link";
 import ReadMoreReact from 'read-more-react';
 
-
 const Missions = ({ missionData }) => {
     return (
         <div>

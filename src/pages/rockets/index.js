@@ -11,12 +11,12 @@ const Rockets = ({ rocketsData }) => {
                 rocketsData.map((rocket, index) => {
                     return (
                         <Link href={`/rockets/${rocket.id}`} key={index}>
-                            <div className="mb-10 bg-foreground rounded shadow m-8 p-10 flex">
-                                <div className="w-1/4">
+                            <div className="mb-10 bg-foreground rounded shadow m-8 p-10 flex flex-col md:flex-row">
+                                <div className="md:w-1/4">
                                     <h1 className="text-3xl font-bold mb-4">{rocket.name}</h1>
                                     <Image src={`${rocket.flickr_images[0]}`} width={200} height={200} alt="rocket-img"></Image>
                                 </div>
-                                <div className="w-3/4 m-auto">
+                                <div className="md:w-3/4 m-auto">
                                     <p className="text-lg mt-4 text-slate-800">{rocket.description}</p>
                                 </div>
                             </div>
