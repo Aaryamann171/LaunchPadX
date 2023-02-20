@@ -23,21 +23,21 @@ const About = () => {
             <div className="m-8 p-10">
                 <h1 className="text-4xl font-bold">About Me</h1>
             </div>
-            <div className="mb-10 bg-foreground rounded shadow m-8 p-10 flex">
-            <div className="w-1/3 bg-white m-4 p-8 rounded text-center">
+            <div className="mb-10 bg-foreground rounded shadow m-8 p-4 md:p-10 flex flex-col md:flex-row">
+            <div className="md:w-1/3 bg-white m-4 md:p-8 rounded text-center">
                 <Image src={'/me.png'} width={500} height={500} className="m-auto" alt="me"></Image>
             </div>
-            <div className="w-2/3 p-4 m-auto">
+            <div className="md:w-2/3 p-4 m-auto">
                 <p className="text-xl mt-4 text-slate-800">
                     I like to play around with various technologies and collaborate with like minded people. 
                     I am currently working as a Full Stack Developer. I am working with Django, Flask and Next.js.
                 </p>
-                <div className="mt-8 flex justify-evenly">
+                <div className="mt-8 flex flex-col md:flex-row text-center justify-evenly">
                     <Link href={`https://aaryamann171.github.io`} legacyBehavior>
                         <a target={'_blank'} className="text-blue-600">{'< Check out my website >'}</a>
                     </Link>
                     <Link href={`https://github.com/aaryamann171`} legacyBehavior>
-                        <a target={'_blank'} className="text-blue-600">{'< Check out my github profile >'}</a>
+                        <a target={'_blank'} className="text-blue-600 md:mt-0 mt-4">{'< Check out my github profile >'}</a>
                     </Link>
                 </div>
             </div>

@@ -1,4 +1,5 @@
 import { convertUnixTimestamp } from "helpers/helpers-funcs";
+import ReadMoreReact from 'read-more-react';
 
 const Launches = ({ launchesData }) => {
     return (
@@ -10,8 +11,8 @@ const Launches = ({ launchesData }) => {
                 launchesData.map((launch, index) => {
                     const successStatusClasses = launch.success ? "text-xl mt-4 text-green-400 font-bold" : "text-xl mt-4 text-red-400 font-bold";
                     return (
-                        <div className="mb-10 bg-foreground rounded shadow m-8 p-10 flex" key={index}>
-                            <div className="w-1/2">
+                        <div className="mb-10 bg-foreground rounded shadow m-8 p-10 flex flex-col md:flex-row" key={index}>
+                            <div className="md:w-1/3">
                                 <h1 className="text-3xl font-bold mb-4">{launch.name}</h1>
                                 <h1 className="text-xl font-bold mb-4">{convertUnixTimestamp(launch.date_unix)}</h1>
                                 <h1 className="text-xl font-bold mb-4">{launch.rocketName}</h1>
@@ -21,7 +22,7 @@ const Launches = ({ launchesData }) => {
                                     <a href={`${launch.links.webcast}`} target="_blank" rel="noreferrer"><p className="text-lg mt-4 text-blue-600">Watch Here</p></a>
                                 }
                             </div>
-                            <div className="w-1/2 m-auto">
+                            <div className="md:w-2/3 m-auto">
                                 <p className={successStatusClasses}>{launch.success ? "SUCCESS" : "FAILED"}</p>
                                 {
                                     launch.success ? "" : launch.failures.map((failure, index) => {
@@ -41,7 +42,15 @@ const Launches = ({ launchesData }) => {
                                     launch.details
                                     ? <div>
                                         <div className="mt-4"><h1 className="font-bold text-xl">Details</h1></div>
-                                        <p className="text-lg text-slate-800">{launch.details}</p>
+                                        <div className="text-lg mt-4 text-slate-800">
+                                        <ReadMoreReact 
+                                            text={launch.details}
+                                            min={180}
+                                            ideal={200}
+                                            max={500}
+                                            read
+                                        />
+                                        </div>
                                       </div>
                                     : <></>
                                 }
