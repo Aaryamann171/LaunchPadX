@@ -11,3 +11,10 @@ export const convertUnixTimestamp = (unixTimestamp) => {
 
     return dateString;
 }
+
+export const titleCase = (str) => {
+    let firstLetter = str[0];
+    let remainingStr = str.slice(1, str.length);
+    const titleStr = firstLetter.toUpperCase() + remainingStr;
+    return titleStr;
+}

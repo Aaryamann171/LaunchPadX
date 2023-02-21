@@ -1,31 +1,48 @@
-import Link from "next/link";
+import SectionHeader from "components/sectionHeader";
 import Image from "next/image";
+
+import CheckOutBtn from "components/checkOutBtn";
+
+import { TfiRocket } from 'react-icons/tfi';
+
+import { titleCase } from "helpers/helpers-funcs";
+
+const RocketDataPoint = ({attribute, value}) => {
+    return (
+    <p className="text-xl md:text-2xl text-slate-700 dark:text-slate-400 mb-3">
+        <span className="font-bold mr-2">{attribute + ":"}</span>{value}
+    </p>
+    )
+}
 
 const Rockets = ({ rocketData }) => {
     return (
         <div>
-            <div className="m-8 p-10">
-                <h1 className="text-4xl font-bold">{rocketData.name}</h1>
-            </div>
-            <div className="mb-10 bg-foreground dark:bg-foregroundDark rounded shadow m-8 p-2 md:p-10 flex flex-col md:flex-row">
-            <div className="md:w-1/3 bg-white dark:bg-black m-4 p-8 rounded text-center">
-                <Image src={`${rocketData.flickr_images[0]}`} width={200} height={200} className="m-auto mb-4" alt="rocket"></Image>
-                <h3 className="text-sm text-slate-700 dark:text-slate-400"><span className="font-bold">Type: </span>{rocketData.type}</h3>
-                <h3 className="text-sm text-slate-700 dark:text-slate-400"><span className="font-bold">Active: </span>{rocketData.active ? "Yes" : "No"}</h3>
-                <h3 className="text-sm text-slate-700 dark:text-slate-400"><span className="font-bold">First Flight: </span>{rocketData.first_flight}</h3>
-                <h3 className="text-sm text-slate-700 dark:text-slate-400"><span className="font-bold">Height: </span>{rocketData.height.feet} ft</h3>
-                <h3 className="text-sm text-slate-700 dark:text-slate-400"><span className="font-bold">Diameter: </span>{rocketData.diameter.feet} ft</h3>
-                <h3 className="text-sm text-slate-700 dark:text-slate-400"><span className="font-bold">Mass: </span>{rocketData.mass.kg} kg</h3>
-                <h3 className="text-sm text-slate-700 dark:text-slate-400"><span className="font-bold">Cost Per Launch: </span>${rocketData.cost_per_launch}</h3>
-                <h3 className="text-sm text-slate-700 dark:text-slate-400"><span className="font-bold">Success Rate: </span>{rocketData.success_rate_pct}%</h3>
-            </div>
-            <div className="md:w-2/3 p-4 m-auto">
+            <SectionHeader
+            icon={ <TfiRocket /> }
+            heading={rocketData.name}
+            />
+            <div className="mb-10 bg-foreground dark:bg-foregroundDark rounded-lg shadow m-4 md:m-8 p-2 md:p-10 flex flex-col md:flex-row border-t border-l border-b-8 border-r-8 border-black">
+            <div className="md:w-1/2 bg-white dark:bg-foregroundDarker m-2 pd:m-4 p-4 md:p-8 rounded text-center border-t border-l border-b-4 border-r-4 border-black">
+                <Image src={`${rocketData.flickr_images[0]}`} width={200} height={200} className="m-auto mb-4 border-2 border-black rounded" alt="rocket"></Image>
                 <p className="text-lg mt-4 text-slate-800 dark:text-slate-400">{rocketData.description}</p>
-                <div className="mt-8">
-                    <Link href={`${rocketData.wikipedia}`} legacyBehavior>
-                        <a target={'_blank'} className="text-blue-600">Read Wiki</a>
-                    </Link>
+            </div>
+            <div className="md:w-1/2 flex flex-col justify-between p-4">
+                <div>
+                    <RocketDataPoint attribute="Type" value={titleCase(rocketData.type)}/>
+                    <RocketDataPoint attribute="Active" value={rocketData.active ? "Yes" : "No"}/>
+                    <RocketDataPoint attribute="First Flight" value={rocketData.first_flight}/>
+                    <RocketDataPoint attribute="Height" value={`${rocketData.height.feet} ft`}/>
+                    <RocketDataPoint attribute="Diameter" value={`${rocketData.diameter.feet} ft`}/>
+                    <RocketDataPoint attribute="Mass" value={`${rocketData.mass.kg} kg`}/>
+                    <RocketDataPoint attribute="Cost Per Launch" value={`${rocketData.cost_per_launch} kg`}/>
+                    <RocketDataPoint attribute="Success Rate" value={`${rocketData.success_rate_pct}%`}/>
                 </div>
+                <div className="mt-8 w-40">
+                    <CheckOutBtn hyperlink={rocketData.wikipedia} message="Read Wiki"/>
+                </div>
+
+
             </div>
             </div>
         </div>

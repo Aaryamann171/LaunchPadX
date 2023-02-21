@@ -4,6 +4,7 @@ import { useTheme } from "next-themes";
 import { GiHamburgerMenu, GiMoon } from 'react-icons/gi';
 import { AiOutlineClose } from 'react-icons/ai';
 import { BiSun } from 'react-icons/bi';
+import { RiSpaceShipLine } from 'react-icons/ri';
 
 const Header = () => {
     const [headerOpen, setHeaderOpen] = useState(false);
@@ -32,7 +33,10 @@ const Header = () => {
     return (
         <div className="w-full bg-primary p-2">
             <div className="md:flex justify-between my-2 hidden">
-                <Link href="/"><h1 className="text-2xl text-accent px-2">LaunchPadX</h1></Link>
+                <div className="flex items-center text-2xl text-accent px-2">
+                    <RiSpaceShipLine/>
+                    <Link href="/"><h1 className="mx-2">LaunchPadX</h1></Link>
+                </div>
                 <Link href="/missions"><h1 className="text-2xl px-4 text-foreground">Missions</h1></Link>
                 <Link href="/rockets"><h1 className="text-2xl px-4 text-foreground">Rockets</h1></Link>
                 <Link href="/launches"><h1 className="text-2xl px-4 text-foreground">Launches</h1></Link>

@@ -6,5 +6,10 @@
     --primary: #21201F;
     --accent: #EF6817;
     --foreground: #EEEEEE;
-    --foregroundDark: #1c1c1c;
+    --foregroundAlt: #D6D6D6;
+    --foregroundDark: #292929;
+    --foregroundDarker: #212121;
+    --pastelPurple: #7286D3;
+    --pastelBlue: #A6DCEF;
+    --pastelGreen: #70AF85;
 }

@@ -1,7 +1,26 @@
 import Head from "next/head";
 import Image from "next/image";
-import Link from "next/link";
+
+import SectionHeader from "components/sectionHeader";
+import CheckOutBtn from "components/checkOutBtn";
+
 import { convertUnixTimestamp } from "helpers/helpers-funcs";
+
+import { RxRocket } from 'react-icons/rx';
+import { HiOutlineShieldCheck } from 'react-icons/hi';
+import { BsCalendar2, BsCalendar2Range, BsSpeedometer2, BsCaretUpSquare } from 'react-icons/bs';
+import { RiRocketLine, RiPinDistanceLine } from 'react-icons/ri';
+import { TfiLocationPin } from 'react-icons/tfi';
+import { MdOutlineNewReleases } from 'react-icons/md';
+import { GiMoebiusStar } from 'react-icons/gi';
+
+const CustomInfo = ({ icon, content }) => {
+    return (
+    <p className="text-lg font-bold mt-4 text-slate-800 dark:text-slate-400 flex items-center">
+        <span className="mr-4">{ icon }</span>{ content }
+    </p>
+    )
+}
 
 const Home = ({ launchesData, latestLaunchData, starmanData }) => {
   return (
@@ -12,46 +31,64 @@ const Home = ({ launchesData, latestLaunchData, starmanData }) => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="bg-foreground dark:bg-foregroundDark flex justify-between p-10">
-        <div className="my-auto p-4 w-full md:w-1/2">
-          <h1 className="font-bold text-black dark:text-white text-4xl md:text-7xl mb-5">LaunchPadX</h1>
+      {/* <div className="bg-foreground dark:bg-foregroundDark flex justify-between px-10 py-16 border-b-2 border-black"> */}
+      <div className="bg-foreground dark:bg-foregroundDark flex justify-between px-4 md:px-10 py-16 border-b-8 rounded-lg border-black">
+        <div className="my-auto p-4 w-4/5 md:w-1/2">
+          <h1 className="font-bold text-black dark:text-white text-4xl md:text-8xl mb-5">LaunchPadX</h1>
           <h1 className="text-lg md:text-2xl">Explore The Final Frontier</h1>
         </div>
-        <div className="hidden md:flex w-1/2 justify-center">
-          <Image className="rounded hidden md:block" src="/spaceman.jpg" width={500} height={500} alt="starman-hero-img"></Image>
+        <div className="flex w-1/5 md:w-1/2 justify-center my-auto text-slate-600">
+          <RxRocket size={275} className="hidden md:block"/>
+          <RxRocket size={50} className="md:hidden"/>
         </div>
       </div>
       <div>
           <div className="w-full justify-center text-center flex flex-col md:flex-row mt-10">
-            <h1 className="text-lg text-black md:text-3xl mx-10 bg-blue-200 py-4 px-8 rounded-full"><span className="font-bold">Total Launches: </span>{launchesData.totalLaunches}</h1>
-            <h1 className="text-lg text-black md:text-3xl mx-10 bg-green-200 py-4 px-8 rounded-full mt-10 md:mt-0"><span className="font-bold">Successful Launches: </span>{launchesData.successfulLaunches}</h1>
+              {/* <h1 className="text-lg text-white md:text-3xl mx-10 bg-gradient-to-r from-violet-500 to-indigo-600 py-4 px-8 rounded-full flex items-center justify-center border-2 border-black"> */}
+              <h1 className="text-lg text-black md:text-3xl mx-10 bg-pastelPurple py-4 px-8 rounded-lg flex items-center justify-center border-t border-l border-b-4 border-r-4 border-black">
+                <BsCaretUpSquare className="mr-2"/>
+                <span className="font-bold">Total Launches: </span>{launchesData.totalLaunches}
+              </h1>
+            {/* <h1 className="text-lg text-white md:text-3xl mx-10 bg-gradient-to-r from-green-400 to-emerald-600 py-4 px-8 rounded-full flex items-center justify-center border-2 border-black mt-10 md:mt-0 "> */}
+            <h1 className="text-lg text-black md:text-3xl mx-10 bg-pastelGreen py-4 px-8 rounded-lg flex items-center justify-center border-t border-l border-b-4 border-r-4 border-black mt-10 md:mt-0 ">
+                <HiOutlineShieldCheck className="mr-2"/>
+              <span className="font-bold">Successful Launches: </span>{launchesData.successfulLaunches}
+            </h1>
           </div>
-        <h1 className="font-bold text-3xl mx-10 mt-10">Latest Launch</h1>
-              <div className="mb-10 bg-foreground dark:bg-foregroundDark rounded shadow m-8 p-10 flex">
-                <div className="md:w-2/3">
-                    <h1 className="text-3xl font-bold mb-4">{latestLaunchData.name}</h1>
-                    <p className="text-lg mt-4 text-slate-800 dark:text-slate-400"><span className="font-bold">Date: </span>{convertUnixTimestamp(latestLaunchData.date_unix)}</p>
-                    <p className="text-lg mt-4 text-slate-800 dark:text-slate-400"><span className="font-bold">Rocket: </span>{latestLaunchData.rocketName}</p>
-                    <p className="text-lg mt-4 text-slate-800 dark:text-slate-400"><span className="font-bold">Launchpad: </span>{latestLaunchData.launchpadName}</p>
-                    <Link href={`${latestLaunchData.links.webcast}`} legacyBehavior><a target={'_blank'}><p className="text-lg mt-4 text-blue-600">Check It Out</p></a></Link>
-                </div>
-                <div className="hidden md:block md:w-1/3">
-                    <Image src={`${latestLaunchData.launchpadImg}`} width={600} height={600} className="rounded" alt="launchpad"></Image>
-                </div>
-              </div>
-      </div>
-      <h1 className="font-bold text-3xl mx-10 mt-10">The Starman</h1>
-      <div className="flex mb-10 bg-foreground dark:bg-foregroundDark rounded shadow m-8 p-10 ">
+        <SectionHeader
+          icon={<MdOutlineNewReleases/>}
+          heading="Latest Launch"
+        />
+        <div className="mb-10 bg-foreground dark:bg-foregroundDark rounded-lg shadow m-4 md:m-8 p-4 md:p-10 flex border-t border-l border-b-8 border-r-8 border-black">
           <div className="md:w-2/3">
-              <h1 className="text-3xl font-bold mb-4">{starmanData.name}</h1>
+              <h1 className="text-3xl font-bold mb-4 text-center md:text-left">{latestLaunchData.name}</h1>
+                <CustomInfo icon={<BsCalendar2 />} content={convertUnixTimestamp(latestLaunchData.date_unix)}/>
+                <CustomInfo icon={<RiRocketLine />} content={latestLaunchData.rocketName}/>
+                <CustomInfo icon={<TfiLocationPin />} content={latestLaunchData.launchpadName}/>
+                <div className="mt-10 w-56">
+                  <CheckOutBtn hyperlink={latestLaunchData.links.webcast} message="Check Out Launch" />
+                </div>
+          </div>
+          <div className="hidden md:block md:w-1/3">
+            <Image src={latestLaunchData.launchpadImg} width={600} height={600} className="rounded" alt="launchpad"></Image>
+          </div>
+        </div>
+      </div>
+        <SectionHeader
+          icon={<GiMoebiusStar/>}
+          heading="The Starman"
+        />
+      <div className="flex mb-10 bg-foreground dark:bg-foregroundDark rounded-lg shadow m-4 md:m-8 p-4 md:p-10 border-t border-l border-b-8 border-r-8 border-black">
+          <div className="md:w-2/3">
+              <h1 className="text-3xl font-bold mb-4 text-center md:text-left">{starmanData.name}</h1>
                 <p className="text-lg dark:text-slate-400 mb-4">{starmanData.details}</p>
-                <p className="text-lg mt-4 text-slate-800 dark:text-slate-400"><span className="font-bold">Launch Date: </span>{convertUnixTimestamp(starmanData.launch_date_unix)}</p>
-                <p className="text-lg mt-4 text-slate-800 dark:text-slate-400"><span className="font-bold">Period Days: </span>{starmanData.period_days.toFixed(2)}</p>
-                <p className="text-lg mt-4 text-slate-800 dark:text-slate-400"><span className="font-bold">Earth Distance: </span>{starmanData.earth_distance_km.toFixed(2)} km</p>
-                <p className="text-lg mt-4 text-slate-800 dark:text-slate-400"><span className="font-bold">Speed: </span>{starmanData.speed_kph.toFixed(2)} kph</p>
+                <CustomInfo icon={<BsCalendar2 title="Launch Date" />} content={convertUnixTimestamp(starmanData.launch_date_unix)}/>
+                <CustomInfo icon={<BsCalendar2Range title="Period Days" />} content={starmanData.period_days.toFixed(2)}/>
+                <CustomInfo icon={<RiPinDistanceLine title="Distance from Earth" />} content={`${starmanData.earth_distance_km.toFixed(2)} km`}/>
+                <CustomInfo icon={<BsSpeedometer2 title="Current Speed" />} content={`${starmanData.speed_kph.toFixed(2)} kph`}/>
           </div>
           <div className="hidden md:block md:w-1/3 my-auto mx-8">
-                <Image src={`${starmanData.flickr_images[1]}`} width={600} height={600} className="rounded" alt="starman"></Image>
+                <Image src="/spaceman.jpg" width={600} height={600} className="rounded" alt="starman"></Image>
           </div>
       </div>
     </>
