@@ -1,29 +1,47 @@
+import SectionHeader from "components/sectionHeader";
 import { convertUnixTimestamp } from "helpers/helpers-funcs";
 import ReadMoreReact from 'read-more-react';
+import { GiRocketThruster, GiCancel } from 'react-icons/gi';
+import CheckOutBtn from "components/checkOutBtn";
+import { BsCalendar2 } from 'react-icons/bs';
+import { RiRocketLine } from 'react-icons/ri';
+import { TfiLocationPin } from 'react-icons/tfi';
+import { AiOutlineCheckCircle } from 'react-icons/ai';
+
+const LaunchHeaderInfo = ({icon, content}) => {
+    return (
+    <p className="text-lg md:text-xl bg-foregroundAlt dark:bg-foregroundDarker p-4 rounded-lg font-bold flex items-center mt-4 md:mt-0 border-t border-l border-b-8 border-r-8 border-black">
+        <span className="font-bold mr-2">{icon}</span>{content}
+    </p>
+    )
+}
 
 const Launches = ({ launchesData }) => {
     return (
         <div>
-            <div className="m-8 p-10">
-                <h1 className="text-4xl font-bold">Last 10 SpaceX Launches</h1>
-            </div>
+            <SectionHeader
+            icon={<GiRocketThruster/>}
+            heading="Last 10 SpaceX Launches"
+            />
             {
                 launchesData.map((launch, index) => {
                     const successStatusClasses = launch.success ? "text-xl mt-4 text-green-400 font-bold" : "text-xl mt-4 text-red-400 font-bold";
                     return (
-                        <div className="mb-10 bg-foreground dark:bg-foregroundDark rounded shadow m-8 p-10 flex flex-col md:flex-row" key={index}>
-                            <div className="md:w-1/3">
-                                <h1 className="text-3xl font-bold mb-4">{launch.name}</h1>
-                                <h1 className="text-xl font-bold mb-4">{convertUnixTimestamp(launch.date_unix)}</h1>
-                                <h1 className="text-xl font-bold mb-4">{launch.rocketName}</h1>
-                                <h1 className="text-lg mb-4">{launch.launchPadName}</h1>
-                                {
-                                    launch.links.webcast &&
-                                    <a href={`${launch.links.webcast}`} target="_blank" rel="noreferrer"><p className="text-lg mt-4 text-blue-600">Watch Here</p></a>
-                                }
+                        <div className="mb-10 bg-foreground dark:bg-foregroundDark rounded-lg shadow m-4 md:m-8 p-4 md:p-8 md:p-16 flex flex-col border-t border-l border-b-8 border-r-8 border-black" key={index}>
+                            <h1 className="text-4xl font-bold mb-4">{launch.name}</h1>
+                            <div className="flex md:space-x-10 my-2 flex-col md:flex-row">
+                                <LaunchHeaderInfo icon={<BsCalendar2/>} content={convertUnixTimestamp(launch.date_unix)}/>
+                                <LaunchHeaderInfo icon={<RiRocketLine/>} content={launch.rocketName}/>
+                                <LaunchHeaderInfo icon={<TfiLocationPin />} content={launch.launchPadName}/>
                             </div>
-                            <div className="md:w-2/3 m-auto">
-                                <p className={successStatusClasses}>{launch.success ? "SUCCESS" : "FAILED"}</p>
+                            <div className="m-auto">
+                                <p className={successStatusClasses}>
+                                    {
+                                    launch.success 
+                                    ? <div className="flex items-center"><AiOutlineCheckCircle className="mr-2" /><p>SUCCESSFUL</p></div> 
+                                    : <div className="flex items-center"><GiCancel className="mr-2" /><p>FAILED</p></div> 
+                                    }
+                                </p>
                                 {
                                     launch.success ? "" : launch.failures.map((failure, index) => {
                                         return (
@@ -40,8 +58,8 @@ const Launches = ({ launchesData }) => {
                                 }
                                 {
                                     launch.details
-                                    ? <div>
-                                        <div className="mt-4"><h1 className="font-bold text-xl">Details</h1></div>
+                                    ? <div className="bg-foregroundAlt dark:bg-foregroundDarker p-4 md:px-8 md:py-6 mt-8 rounded-lg border-t border-l border-b-8 border-r-8 border-black">
+                                        <div className="mt-4"><h1 className="font-bold text-2xl">Details</h1></div>
                                         <div className="text-lg mt-4 text-slate-800 dark:text-slate-400">
                                         <ReadMoreReact 
                                             text={launch.details}
@@ -53,6 +71,12 @@ const Launches = ({ launchesData }) => {
                                         </div>
                                       </div>
                                     : <></>
+                                }
+                                {
+                                    launch.links.webcast &&
+                                    <div className="w-40 mt-10">
+                                        <CheckOutBtn hyperlink={launch.links.webcast} message="Watch Here"/>
+                                    </div>
                                 }
                             </div>
                         </div>
