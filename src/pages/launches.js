@@ -11,7 +11,7 @@ const Launches = ({ launchesData }) => {
                 launchesData.map((launch, index) => {
                     const successStatusClasses = launch.success ? "text-xl mt-4 text-green-400 font-bold" : "text-xl mt-4 text-red-400 font-bold";
                     return (
-                        <div className="mb-10 bg-foreground rounded shadow m-8 p-10 flex flex-col md:flex-row" key={index}>
+                        <div className="mb-10 bg-foreground dark:bg-foregroundDark rounded shadow m-8 p-10 flex flex-col md:flex-row" key={index}>
                             <div className="md:w-1/3">
                                 <h1 className="text-3xl font-bold mb-4">{launch.name}</h1>
                                 <h1 className="text-xl font-bold mb-4">{convertUnixTimestamp(launch.date_unix)}</h1>
@@ -42,7 +42,7 @@ const Launches = ({ launchesData }) => {
                                     launch.details
                                     ? <div>
                                         <div className="mt-4"><h1 className="font-bold text-xl">Details</h1></div>
-                                        <div className="text-lg mt-4 text-slate-800">
+                                        <div className="text-lg mt-4 text-slate-800 dark:text-slate-400">
                                         <ReadMoreReact 
                                             text={launch.details}
                                             min={180}
