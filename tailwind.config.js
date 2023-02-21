@@ -8,12 +8,14 @@ module.exports = {
     // Or if using `src` directory:
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
+  darkMode: 'class',
   theme: {
     extend: {
       colors: (theme) => ({
         primary: "var(--primary)",
         accent: "var(--accent)",
-        foreground: "var(--foreground)"
+        foreground: "var(--foreground)",
+        foregroundDark: "var(--foregroundDark)",
       }),
     },
   },
