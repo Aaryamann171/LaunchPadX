@@ -54,6 +54,8 @@ const Header = () => {
         }
     }
 
+    const mobileNavLinksClasses = "text-2xl px-4 text-foreground mt-2 hover:bg-accent hover:text-orange-200"
+
     return (
         <div className="w-full bg-primary p-2">
             <div className="md:flex justify-between my-2 hidden">
@@ -80,11 +82,11 @@ const Header = () => {
             </div>
             {
                 headerOpen 
-                ? <div className="md:hidden pb-4">
-                    <Link href="/missions"><h1 className="text-2xl px-4 text-foreground mt-2">{missionsInnerText}</h1></Link>
-                    <Link href="/rockets"><h1 className="text-2xl px-4 text-foreground mt-2">{rocketsInnerText}</h1></Link>
-                    <Link href="/launches"><h1 className="text-2xl px-4 text-foreground mt-2">{launchesInnerText}</h1></Link>
-                    <Link href="/about"><h1 className="text-2xl px-4 text-foreground mt-2">{aboutInnerText}</h1></Link>
+                ? <div className="md:hidden pb-4 text-center">
+                    <Link href="/missions"><h1 className={mobileNavLinksClasses}>{missionsInnerText}</h1></Link>
+                    <Link href="/rockets"><h1 className={mobileNavLinksClasses}>{rocketsInnerText}</h1></Link>
+                    <Link href="/launches"><h1 className={mobileNavLinksClasses}>{launchesInnerText}</h1></Link>
+                    <Link href="/about"><h1 className={mobileNavLinksClasses}>{aboutInnerText}</h1></Link>
                  </div>
                 : null
             }

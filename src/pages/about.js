@@ -5,8 +5,8 @@ import Image from "next/image";
 
 import { BsGithub } from 'react-icons/bs';
 import { BiGlobe } from 'react-icons/bi';
-import { SiLaunchpad } from 'react-icons/si';
 import { TfiInfoAlt } from 'react-icons/tfi';
+import { GiMoebiusTriangle } from 'react-icons/gi';
 
 const SocialBtn = ({ hyperlink, message, icon }) =>{
     return (
@@ -27,7 +27,7 @@ const About = () => {
     return (
         <div>
             <SectionHeader
-                icon={<SiLaunchpad/>}
+                icon={<TfiInfoAlt/>}
                 heading="About This Project"
             />
             <div className="mb-10 bg-foreground dark:bg-foregroundDark rounded shadow m-4 md:m-8 p-4 md:p-10 border-t border-l border-b-8 border-r-8 border-black">
@@ -42,7 +42,7 @@ const About = () => {
                 </div>
             </div>
             <SectionHeader
-                icon={<TfiInfoAlt/>}
+                icon={<GiMoebiusTriangle />}
                 heading="About Me"
             />
             <div className="mb-10 bg-foreground dark:bg-foregroundDark rounded shadow m-4 md:m-8 p-2 md:p-10 flex flex-col md:flex-row border-t border-l border-b-8 border-r-8 border-black">
