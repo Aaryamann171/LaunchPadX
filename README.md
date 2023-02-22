@@ -12,6 +12,10 @@ Explore the final frontier
 
 ## TODO
 - [x] Deploy initial build
-- [ ] Finalize UI Components
-- [ ] Responsive Design
+- [x] Finalize UI Components
+- [x] Responsive Design
+- [x] Dark Mode
+- [ ] Change Color Palette
+- [ ] Update Fonts
+- [ ] Update Footer and Navbar
 - [ ] Add user authentication

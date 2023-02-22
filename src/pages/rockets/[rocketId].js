@@ -9,7 +9,7 @@ import { titleCase } from "helpers/helpers-funcs";
 
 const RocketDataPoint = ({attribute, value}) => {
     return (
-    <p className="text-xl md:text-2xl text-slate-700 dark:text-slate-400 mb-3">
+    <p className="text-xl md:text-2xl text-zinc-700 dark:text-zinc-400 mb-3">
         <span className="font-bold mr-2">{attribute + ":"}</span>{value}
     </p>
     )
@@ -23,11 +23,11 @@ const Rockets = ({ rocketData }) => {
             heading={rocketData.name}
             />
             <div className="mb-10 bg-foreground dark:bg-foregroundDark rounded-lg shadow m-4 md:m-8 p-2 md:p-10 flex flex-col md:flex-row border-t border-l border-b-8 border-r-8 border-black">
-            <div className="md:w-1/2 bg-white dark:bg-foregroundDarker m-2 pd:m-4 p-4 md:p-8 rounded text-center border-t border-l border-b-4 border-r-4 border-black">
-                <Image src={`${rocketData.flickr_images[0]}`} width={200} height={200} className="m-auto mb-4 border-2 border-black rounded" alt="rocket"></Image>
-                <p className="text-lg mt-4 text-slate-800 dark:text-slate-400">{rocketData.description}</p>
+            <div className="md:w-2/3 bg-white dark:bg-foregroundDarker m-2 pd:m-4 p-4 md:p-8 rounded text-center border-t border-l border-b-4 border-r-4 border-black">
+                <Image src={`${rocketData.flickr_images[0]}`} width={400} height={200} className="m-auto mb-4 border-2 border-black rounded" alt="rocket"></Image>
+                <p className="text-lg mt-4 text-zinc-800 dark:text-zinc-400">{rocketData.description}</p>
             </div>
-            <div className="md:w-1/2 flex flex-col justify-between p-4">
+            <div className="md:w-1/3 flex flex-col justify-between p-4">
                 <div>
                     <RocketDataPoint attribute="Type" value={titleCase(rocketData.type)}/>
                     <RocketDataPoint attribute="Active" value={rocketData.active ? "Yes" : "No"}/>
