@@ -1,8 +1,10 @@
 import SectionHeader from "components/sectionHeader";
-import { convertUnixTimestamp } from "helpers/helpers-funcs";
-import ReadMoreReact from 'read-more-react';
-import { GiRocketThruster, GiCancel } from 'react-icons/gi';
 import CheckOutBtn from "components/checkOutBtn";
+
+import ReadMoreReact from 'read-more-react';
+
+import { convertUnixTimestamp } from "helpers/helpers-funcs";
+import { GiRocketThruster, GiCancel } from 'react-icons/gi';
 import { BsCalendar2 } from 'react-icons/bs';
 import { RiRocketLine } from 'react-icons/ri';
 import { TfiLocationPin } from 'react-icons/tfi';
@@ -10,7 +12,7 @@ import { AiOutlineCheckCircle } from 'react-icons/ai';
 
 const LaunchHeaderInfo = ({icon, content}) => {
     return (
-    <p className="text-lg md:text-xl bg-foregroundAlt dark:bg-foregroundDarker p-4 rounded-lg font-bold flex items-center mt-4 md:mt-0 border-t border-l border-b-8 border-r-8 border-black">
+    <p className="text-lg md:text-xl bg-foregroundAlt dark:bg-foregroundDarker p-4 rounded-lg font-bold flex items-center mt-4 md:mt-0 border-2 border-black">
         <span className="font-bold mr-2">{icon}</span>{content}
     </p>
     )
@@ -49,7 +51,7 @@ const Launches = ({ launchesData }) => {
                                                 <div className="mt-4">
                                                     <h1 className="font-bold">Reason of Failure</h1>
                                                 </div>
-                                                <p className="text-lgtext-slate-800">
+                                                <p className="text-lg text-zinc-800">
                                                     {failure.reason}
                                                 </p>
                                             </div>
@@ -58,9 +60,9 @@ const Launches = ({ launchesData }) => {
                                 }
                                 {
                                     launch.details
-                                    ? <div className="bg-foregroundAlt dark:bg-foregroundDarker p-4 md:px-8 md:py-6 mt-8 rounded-lg border-t border-l border-b-8 border-r-8 border-black">
+                                    ? <div className="bg-foregroundAlt dark:bg-foregroundDarker p-4 md:px-8 md:py-6 mt-8 rounded-lg border-2 border-black">
                                         <div className="mt-4"><h1 className="font-bold text-2xl">Details</h1></div>
-                                        <div className="text-lg mt-4 text-slate-800 dark:text-slate-400">
+                                        <div className="text-lg mt-4 text-zinc-800 dark:text-zinc-400">
                                         <ReadMoreReact 
                                             text={launch.details}
                                             min={180}

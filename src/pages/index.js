@@ -6,7 +6,6 @@ import CheckOutBtn from "components/checkOutBtn";
 
 import { convertUnixTimestamp } from "helpers/helpers-funcs";
 
-import { RxRocket } from 'react-icons/rx';
 import { HiOutlineShieldCheck } from 'react-icons/hi';
 import { BsCalendar2, BsCalendar2Range, BsSpeedometer2, BsCaretUpSquare } from 'react-icons/bs';
 import { RiRocketLine, RiPinDistanceLine } from 'react-icons/ri';
@@ -16,7 +15,7 @@ import { GiMoebiusStar } from 'react-icons/gi';
 
 const CustomInfo = ({ icon, content }) => {
     return (
-    <p className="text-lg font-bold mt-4 text-slate-800 dark:text-slate-400 flex items-center">
+    <p className="text-lg font-bold mt-4 text-zinc-800 dark:text-zinc-400 flex items-center">
         <span className="mr-4">{ icon }</span>{ content }
     </p>
     )
@@ -31,25 +30,21 @@ const Home = ({ launchesData, latestLaunchData, starmanData }) => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      {/* <div className="bg-foreground dark:bg-foregroundDark flex justify-between px-10 py-16 border-b-2 border-black"> */}
       <div className="bg-foreground dark:bg-foregroundDark flex justify-between px-4 md:px-10 py-16 border-b-8 rounded-lg border-black">
         <div className="my-auto p-4 w-4/5 md:w-1/2">
           <h1 className="font-bold text-black dark:text-white text-4xl md:text-8xl mb-5">LaunchPadX</h1>
           <h1 className="text-lg md:text-2xl">Explore The Final Frontier</h1>
         </div>
-        <div className="flex w-1/5 md:w-1/2 justify-center my-auto text-slate-600">
-          <RxRocket size={275} className="hidden md:block"/>
-          <RxRocket size={50} className="md:hidden"/>
+        <div className="flex w-1/5 md:w-1/2 justify-center my-auto text-zinc-600">
+          <Image src="/vector.png" height={600} width={400} alt="vector"/>
         </div>
       </div>
       <div>
-          <div className="w-full justify-center text-center flex flex-col md:flex-row mt-6 md:mt-10">
-              {/* <h1 className="text-lg text-white md:text-3xl mx-10 bg-gradient-to-r from-violet-500 to-indigo-600 py-4 px-8 rounded-full flex items-center justify-center border-2 border-black"> */}
+          <div className="w-full justify-center text-center flex flex-col md:flex-row mt-6 md:mt-20">
               <h1 className="text-lg text-black md:text-3xl mx-10 bg-pastelPurple py-4 px-8 rounded-lg flex items-center justify-center border-t border-l border-b-4 border-r-4 border-black">
                 <BsCaretUpSquare className="mr-2"/>
                 <span className="font-bold">Total Launches: </span>{launchesData.totalLaunches}
               </h1>
-            {/* <h1 className="text-lg text-white md:text-3xl mx-10 bg-gradient-to-r from-green-400 to-emerald-600 py-4 px-8 rounded-full flex items-center justify-center border-2 border-black mt-10 md:mt-0 "> */}
             <h1 className="text-lg text-black md:text-3xl mx-10 bg-pastelGreen py-4 px-8 rounded-lg flex items-center justify-center border-t border-l border-b-4 border-r-4 border-black mt-4 md:mt-0 ">
                 <HiOutlineShieldCheck className="mr-2"/>
               <span className="font-bold">Successful Launches: </span>{launchesData.successfulLaunches}
@@ -81,7 +76,7 @@ const Home = ({ launchesData, latestLaunchData, starmanData }) => {
       <div className="flex mb-10 bg-foreground dark:bg-foregroundDark rounded-lg shadow m-4 md:m-8 p-4 md:p-10 border-t border-l border-b-8 border-r-8 border-black">
           <div className="md:w-2/3">
               <h1 className="text-3xl font-bold mb-4 text-center md:text-left">{starmanData.name}</h1>
-                <p className="text-lg dark:text-slate-400 mb-4">{starmanData.details}</p>
+                <p className="text-lg dark:text-zinc-400 mb-4">{starmanData.details}</p>
                 <CustomInfo icon={<BsCalendar2 title="Launch Date" />} content={convertUnixTimestamp(starmanData.launch_date_unix)}/>
                 <CustomInfo icon={<BsCalendar2Range title="Period Days" />} content={starmanData.period_days.toFixed(2)}/>
                 <CustomInfo icon={<RiPinDistanceLine title="Distance from Earth" />} content={`${starmanData.earth_distance_km.toFixed(2)} km`}/>

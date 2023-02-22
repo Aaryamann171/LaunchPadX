@@ -5,11 +5,11 @@
 :root {
     --primary: #21201F;
     --accent: #EF6817;
-    --foreground: #EEEEEE;
-    --foregroundAlt: #D6D6D6;
-    --foregroundDark: #292929;
-    --foregroundDarker: #212121;
-    --pastelPurple: #7286D3;
+    --foreground: #f3f4f6;
+    --foregroundAlt: #e5e7eb;
+    --foregroundDark: #2e2e2e;
+    --foregroundDarker: #171717;
+    --pastelPurple: #a0c4ff;
     --pastelBlue: #A6DCEF;
-    --pastelGreen: #70AF85;
+    --pastelGreen: #caffbf;
 }

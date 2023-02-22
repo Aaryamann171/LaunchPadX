@@ -16,8 +16,8 @@ const Missions = ({ missionData }) => {
                     return (
                         <div className="mb-10 bg-foreground dark:bg-foregroundDark rounded-lg shadow m-4 md:m-8 p-4 md:p-10 border-t border-l border-b-8 border-r-8 border-black" key={index}>
                             <h1 className="text-3xl font-bold">{mission.mission_name}</h1>
-                            <h3 className="text-sm text-slate-700 dark:text-slate-400"><span className="font-bold">Manufactured by: </span>{manufacturersList}</h3>
-                            <div className="text-lg mt-4 text-slate-800 dark:text-slate-400">
+                            <h3 className="text-sm text-zinc-700 dark:text-zinc-400"><span className="font-bold">Manufactured by: </span>{manufacturersList}</h3>
+                            <div className="text-lg mt-4 text-zinc-800 dark:text-zinc-400">
                             <ReadMoreReact 
                                 text={mission.description}
                                 min={200}
