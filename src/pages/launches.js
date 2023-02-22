@@ -25,7 +25,7 @@ const Launches = ({ launchesData }) => {
             />
             {
                 launchesData.map((launch, index) => {
-                    const successStatusClasses = launch.success ? "text-xl mt-4 text-green-400 font-bold" : "text-xl mt-4 text-red-400 font-bold";
+                    const successStatusClasses = launch.success ? "text-xl mt-4 text-green-600 font-bold" : "text-xl mt-4 text-red-400 font-bold";
                     return (
                         <div className="mb-10 bg-foreground dark:bg-foregroundDark rounded-lg shadow m-4 md:m-8 p-4 md:p-8 md:p-16 flex flex-col border-t border-l border-b-8 border-r-8 border-black" key={index}>
                             <h1 className="text-4xl font-bold mb-4">{launch.name}</h1>

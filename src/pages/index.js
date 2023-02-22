@@ -43,14 +43,14 @@ const Home = ({ launchesData, latestLaunchData, starmanData }) => {
         </div>
       </div>
       <div>
-          <div className="w-full justify-center text-center flex flex-col md:flex-row mt-10">
+          <div className="w-full justify-center text-center flex flex-col md:flex-row mt-6 md:mt-10">
               {/* <h1 className="text-lg text-white md:text-3xl mx-10 bg-gradient-to-r from-violet-500 to-indigo-600 py-4 px-8 rounded-full flex items-center justify-center border-2 border-black"> */}
               <h1 className="text-lg text-black md:text-3xl mx-10 bg-pastelPurple py-4 px-8 rounded-lg flex items-center justify-center border-t border-l border-b-4 border-r-4 border-black">
                 <BsCaretUpSquare className="mr-2"/>
                 <span className="font-bold">Total Launches: </span>{launchesData.totalLaunches}
               </h1>
             {/* <h1 className="text-lg text-white md:text-3xl mx-10 bg-gradient-to-r from-green-400 to-emerald-600 py-4 px-8 rounded-full flex items-center justify-center border-2 border-black mt-10 md:mt-0 "> */}
-            <h1 className="text-lg text-black md:text-3xl mx-10 bg-pastelGreen py-4 px-8 rounded-lg flex items-center justify-center border-t border-l border-b-4 border-r-4 border-black mt-10 md:mt-0 ">
+            <h1 className="text-lg text-black md:text-3xl mx-10 bg-pastelGreen py-4 px-8 rounded-lg flex items-center justify-center border-t border-l border-b-4 border-r-4 border-black mt-4 md:mt-0 ">
                 <HiOutlineShieldCheck className="mr-2"/>
               <span className="font-bold">Successful Launches: </span>{launchesData.successfulLaunches}
             </h1>

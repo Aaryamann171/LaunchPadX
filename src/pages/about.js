@@ -11,7 +11,7 @@ const SocialBtn = ({ hyperlink, message, icon }) =>{
         <Link href={ hyperlink } legacyBehavior>
             <div className="cursor-pointer my-2">
                 <a target={'_blank'}>
-                    <p className="flex items-center text-lg text-black bg-pastelBlue p-2 text-center rounded-lg font-bold border-t border-l border-b-4 border-r-4 border-black">
+                    <p className="flex justify-center text-lg text-black bg-pastelBlue py-2 px-4 text-center rounded-lg font-bold border-t border-l border-b-4 border-r-4 border-black">
                         { message }
                         { icon }
                     </p>
