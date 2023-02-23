@@ -1,6 +1,6 @@
 const Footer = () => {
     return (
-        <div className="w-full bg-primary">
+        <div className="w-full bg-primary mt-20">
             <footer className="text-center lg:text-left">
             <div className="text-center p-4">
                 <a href="http://aaryamann171.github.io" target={'_blank'} rel="noreferrer">
