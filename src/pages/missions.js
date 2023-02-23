@@ -45,6 +45,7 @@ export const getStaticProps = async (context) => {
         props: {
             missionData: missionResJSON
         },
+        revalidate: 14400  // 4 hours
     }
 }
 

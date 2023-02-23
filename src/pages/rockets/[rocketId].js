@@ -49,6 +49,19 @@ const Rockets = ({ rocketData }) => {
     )
 }
 
+export const getStaticProps = async (context) => {
+    const rocketId = context.params.rocketId;
+    const rocketEndpoints = `https://api.spacexdata.com/v4/rockets/${rocketId}`;
+    const rocketRes = await fetch(rocketEndpoints);
+    const rocketResJSON = await rocketRes.json();
+    return {
+        props: {
+            rocketData: rocketResJSON
+        },
+        revalidate: 14400  // 4 hours
+    }
+}
+
 export const getStaticPaths = async () => {
     const rocketsEndpoint = 'https://api.spacexdata.com/v4/rockets';
     const rocketsRes = await fetch(rocketsEndpoint);
@@ -64,18 +77,6 @@ export const getStaticPaths = async () => {
     paths,
     fallback: false,
   }
-}
-
-export const getStaticProps = async (context) => {
-    const rocketId = context.params.rocketId;
-    const rocketEndpoints = `https://api.spacexdata.com/v4/rockets/${rocketId}`;
-    const rocketRes = await fetch(rocketEndpoints);
-    const rocketResJSON = await rocketRes.json();
-    return {
-        props: {
-            rocketData: rocketResJSON
-        },
-    }
 }
 
 export default Rockets; 
