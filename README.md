@@ -15,7 +15,10 @@ Explore the final frontier
 - [x] Finalize UI Components
 - [x] Responsive Design
 - [x] Dark Mode
-- [ ] Change Color Palette
-- [ ] Update Fonts
+- [x] Change Color Palette
+- [x] Update Fonts
+- [x] UI Update - Neo Brutalism
+- [x] Add progress bar for page loads
+- [x] Add a custom 404 page
 - [ ] Update Footer and Navbar
 - [ ] Add user authentication
