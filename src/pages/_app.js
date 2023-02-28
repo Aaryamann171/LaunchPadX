@@ -16,7 +16,7 @@ const App = ({ Component, pageProps }) => {
   return (
     <ThemeProvider enableSystem={true} attribute="class">
       <main className={kanit.className}>
-        <NextNProgress color="#EF6817" />
+        <NextNProgress color="linear-gradient(to right, rgb(202, 138, 4), rgb(220, 38, 38))" />
         <Header />
         <Component {...pageProps} />
         <Footer />

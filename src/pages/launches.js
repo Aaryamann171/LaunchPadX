@@ -124,6 +124,7 @@ export const getStaticProps = async (context) => {
         props: {
             launchesData: launchesData
         },
+        revalidate: 14400  // 4 hours
     }
 }
 

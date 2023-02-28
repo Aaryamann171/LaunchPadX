@@ -39,6 +39,7 @@ export const getStaticProps = async (context) => {
         props: {
             rocketsData: rocketsResJSON
         },
+        revalidate: 14400  // 4 hours
     }
 }
 

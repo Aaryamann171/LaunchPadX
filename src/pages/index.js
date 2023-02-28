@@ -138,6 +138,7 @@ export const getStaticProps = async (context) => {
             latestLaunchData,
             starmanData: starmanResJSON
         },
+        revalidate: 14400  // 4 hours
     }
 }
 

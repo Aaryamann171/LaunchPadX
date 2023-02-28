@@ -82,7 +82,7 @@ const Header = () => {
             </div>
             {
                 headerOpen 
-                ? <div className="md:hidden pb-4 text-center">
+                ? <div className="md:hidden transition-opacity ease-in delay-100 duration-500 py-4 text-center">
                     <Link href="/missions"><h1 className={mobileNavLinksClasses}>{missionsInnerText}</h1></Link>
                     <Link href="/rockets"><h1 className={mobileNavLinksClasses}>{rocketsInnerText}</h1></Link>
                     <Link href="/launches"><h1 className={mobileNavLinksClasses}>{launchesInnerText}</h1></Link>
